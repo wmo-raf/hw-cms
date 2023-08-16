@@ -10,6 +10,7 @@ urlpatterns = [
     path("admin/", include(wagtailadmin_urls)),
     path("documents/", include(wagtaildocs_urls)),
     path("", include("geomanager.urls")),
+    path("", include("ecmwf.urls")),
 ]
 
 if settings.DEBUG:

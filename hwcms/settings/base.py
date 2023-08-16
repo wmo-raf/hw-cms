@@ -21,7 +21,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 env = environ.Env(
     # set casting, default value
     DEBUG=(bool, False),
-    EMAIL_USE_TLS=(bool, True),
+    WAGTAIL_CACHE=(bool, False),
 )
 
 if os.path.exists(os.path.join(BASE_DIR, '.env')):
@@ -35,7 +35,9 @@ if os.path.exists(os.path.join(BASE_DIR, '.env')):
 # Application definition
 
 INSTALLED_APPS = [
+    "base",
     "home",
+    "ecmwf",
 
     "wagtail.contrib.modeladmin",
     "wagtail.contrib.settings",
@@ -167,7 +169,7 @@ STATICFILES_DIRS = [
 # ManifestStaticFilesStorage is recommended in production, to prevent outdated
 # JavaScript / CSS assets being served from cache (e.g. after a Wagtail upgrade).
 # See https://docs.djangoproject.com/en/4.2/ref/contrib/staticfiles/#manifeststaticfilesstorage
-STATICFILES_STORAGE = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
+STATICFILES_STORAGE = "base.storage.ManifestStaticFilesStorageNotStrict"
 
 FORCE_SCRIPT_NAME = env.str("FORCE_SCRIPT_NAME", default="")
 

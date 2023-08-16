@@ -6,6 +6,7 @@ FROM ghcr.io/osgeo/gdal:ubuntu-small-3.7.0
 RUN apt-get update && apt-get install -y \
     cron \
     libgeos-dev \
+    libpq-dev \
     imagemagick \
     libmagic1 \
     libcairo2-dev \
@@ -43,5 +44,3 @@ RUN mkdir -p tmp
 
 # Port used by this container to serve HTTP.
 EXPOSE 8000
-
-ENTRYPOINT ["./docker-entrypoint.sh"]

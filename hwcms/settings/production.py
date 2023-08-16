@@ -42,7 +42,7 @@ MANIFEST_LOADER = {
 WAGTAIL_CACHE_BACKEND = "pagecache"
 
 # Enable caching in production
-WAGTAIL_CACHE = True
+WAGTAIL_CACHE = env("WAGTAIL_CACHE", True)
 
 FILE_UPLOAD_TEMP_DIR = os.path.join(BASE_DIR, 'tmp')
 
