@@ -4,13 +4,17 @@ from isodate import parse_duration
 from owslib.wms import WebMapService
 
 
-def get_layer_time_values(layer):
-    base_url = "https://eccharts.ecmwf.int/wms/?"
+def get_layer_time_values(layer, base_url, token):
+    params = {
+        "layers": layer,
+        "token": token
+    }
 
-    base_url = base_url + "&token=530604a2ed5d28f759c02185beb2ca12"
-    base_url = base_url + f"&layers={layer}"
+    query_string = "&".join([f"{key}={value}" for key, value in params.items()])
 
-    wms = WebMapService(base_url, version='1.3.0')
+    full_url = f"{base_url}?{query_string}"
+
+    wms = WebMapService(full_url, version='1.3.0')
 
     wms_layers = list(wms.contents)
     timestamps = []
