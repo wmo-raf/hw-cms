@@ -4,7 +4,6 @@ from proxy.views import proxy_view
 from .models import EcmwfSettings
 from .utils import get_layer_time_values
 
-
 def ecmwf_get_map_proxy(request):
     ec_settings = EcmwfSettings.for_request(request)
     base_url = ec_settings.eccharts_wms_url
